@@ -1,5 +1,12 @@
-
-
+/*create table PERSON
+(
+   id integer not null,
+   name varchar(255) not null,
+   location varchar(255),
+   birth_date timestamp,
+   primary key(id)
+);
+*/
 
 INSERT INTO person (ID,name,location,birth_date)
 VALUES (10001,'Ritu','Pune',sysdate());
