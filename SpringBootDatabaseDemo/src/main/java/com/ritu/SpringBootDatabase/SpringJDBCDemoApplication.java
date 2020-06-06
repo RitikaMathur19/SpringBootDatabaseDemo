@@ -12,14 +12,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.ritu.SpringBootDatabase.entity.Person;
 import com.ritu.SpringBootDatabase.jdbcDAO.PersonJdbcDao;
 
-@SpringBootApplication
-public class SpringBootDatabaseDemoApplication implements CommandLineRunner{
+//@SpringBootApplication
+public class SpringJDBCDemoApplication implements CommandLineRunner{
 
-	private Logger logger = LoggerFactory.getLogger(SpringBootDatabaseDemoApplication.class);
+	private Logger logger = LoggerFactory.getLogger(SpringJDBCDemoApplication.class);
 	@Autowired
 	PersonJdbcDao dao;
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDatabaseDemoApplication.class, args);
+		SpringApplication.run(SpringJDBCDemoApplication.class, args);
 	}
 
 	@Override
