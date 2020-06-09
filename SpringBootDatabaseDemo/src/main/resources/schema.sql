@@ -6,3 +6,4 @@ create table PERSON
    birth_date timestamp,
    primary key(id)
 );
+create sequence hibernate_sequence;
