@@ -1,0 +1,15 @@
+insert into course(id,name,created_date,last_updated_date) values (1001,'Hindi',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1002,'English',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1003,'Maths',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1004,'Science',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1005,'History',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1006,'Social Science',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1007,'Dummy2',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1008,'Dummy3',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1009,'Moral Science',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1010,'Dummy5',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1011,'Dummy6',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1012,'Dummy7',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1013,'Dummy8',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1014,'Dummy9',sysdate(),sysdate());
+insert into course(id,name,created_date,last_updated_date) values (1015,'Dummy10',sysdate(),sysdate());
