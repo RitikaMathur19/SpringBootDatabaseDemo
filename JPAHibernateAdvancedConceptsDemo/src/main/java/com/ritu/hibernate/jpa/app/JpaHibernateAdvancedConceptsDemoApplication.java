@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ritu.hibernate.jpa.app.entity.Course;
 import com.ritu.hibernate.jpa.app.repository.CourseRepository;
+import com.ritu.hibernate.jpa.app.repository.StudentRepository;
 
 
 
@@ -19,6 +20,10 @@ public class JpaHibernateAdvancedConceptsDemoApplication implements CommandLineR
 	
 	@Autowired
 	CourseRepository courseRepo;
+	@Autowired 
+	StudentRepository studentRepo;
+	
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(JpaHibernateAdvancedConceptsDemoApplication.class, args);
@@ -26,11 +31,11 @@ public class JpaHibernateAdvancedConceptsDemoApplication implements CommandLineR
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("Searching course--->"+courseRepo.findById(1001L));
-		
-		 courseRepo.deletebyId(1001L); 
-		 courseRepo.save(new Course("Yogic Sciences"));
-		 
+		/*
+		 * logger.info("Searching course--->"+courseRepo.findById(1001L));
+		 * courseRepo.deletebyId(1001L); courseRepo.save(new Course("Yogic Sciences"));
+		 */
+		studentRepo.saveStudentWithPassport();
 		
 	}
 
