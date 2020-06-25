@@ -29,3 +29,7 @@ insert into review(id,rating,description,course_id,student_id) values (5002,'5',
 insert into review(id,rating,description,course_id,student_id) values (5003,'4','Enjoyed Learning','1003','2002');
 insert into review(id,rating,description,course_id,student_id) values (5004,'4','Wonderful Learning','1005','2004');
 
+insert into student_course(student_id,course_id) values (2001,1001);
+insert into student_course(student_id,course_id) values (2002,1001);
+insert into student_course(student_id,course_id) values (2001,1004);
+insert into student_course(student_id,course_id) values (2002,1005);

@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -26,6 +27,16 @@ public class Student {
 	/* Assuming Student can have only one passport */
 	@OneToOne(fetch = FetchType.LAZY)
 	private Passport passport;
+	
+	/* One student can submit multiple reviews */
+	@OneToMany(fetch=FetchType.LAZY)
+	private List<Review> reviews = new ArrayList<>();
+	
+	/* A student can join many courses and vice versa */
+	// By default many to many is lazy
+	@ManyToMany
+	@JoinTable(name="STUDENT_COURSE",joinColumns=@JoinColumn(name="STUDENT_ID"),inverseJoinColumns=@JoinColumn(name = "Course_id"))
+	private List<Course> courses = new  ArrayList<>();
 
 	protected Student() {
 	}
@@ -62,6 +73,28 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void addReviews(Review review) {
+		this.reviews.add(review);
+	}
+	
+	public void removeReview(Review review) {
+		this.reviews.remove(review);
+	}
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void addCourses(Course course) {
+		this.courses.add(course);
+	}
+	public void removeCourses(Course course) {
+		this.courses.remove(course);
+	}
+
 
 	@Override
 	public String toString() {

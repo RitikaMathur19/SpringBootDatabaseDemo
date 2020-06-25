@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ritu.hibernate.jpa.app.entity.Course;
 import com.ritu.hibernate.jpa.app.entity.Review;
+import com.ritu.hibernate.jpa.app.entity.Student;
 import com.ritu.hibernate.jpa.app.repository.CourseRepository;
 import com.ritu.hibernate.jpa.app.repository.StudentRepository;
 
@@ -47,6 +48,10 @@ public class JpaHibernateAdvancedConceptsDemoApplication implements CommandLineR
 		reviews.add(review2);
 		reviews.add(review1);
 		courseRepo.addReviewForCourse(1004L, reviews);
+
+		Student student = new Student("Jack Ma");
+		Course course = new Course("Artificial Intelligence");
+		studentRepo.insertStudentAndCourse(student, course);
 
 	}
 
