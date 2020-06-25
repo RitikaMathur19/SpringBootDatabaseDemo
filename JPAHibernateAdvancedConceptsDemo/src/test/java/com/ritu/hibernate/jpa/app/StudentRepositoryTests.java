@@ -61,5 +61,26 @@ class StudentRepositoryTests {
 
 	}
 	
+	//testing many to many relationship
+		@Test
+		@Transactional
+		public void retrieveStudentAndCourses() {
+			Student student = em.find(Student.class, 2001L);
+			logger.info("Student is->"+student);
+			logger.info("Student's courses are->"+student.getCourses());
+			
+		}
+		
+		@Test
+		@Transactional
+		public void retrieveReviewsOfStudent() {
+			Student student = em.find(Student.class, 2002L);
+			logger.info("Student is->"+student);
+			logger.info("Student's reviews are->"+student.getReviews());
+			
+		}
+
+
+	
 
 	}

@@ -8,8 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ritu.hibernate.jpa.app.entity.Course;
 import com.ritu.hibernate.jpa.app.entity.Passport;
 import com.ritu.hibernate.jpa.app.entity.Student;
+
 
 
 @Repository
@@ -65,6 +67,24 @@ public class StudentRepository {
 		logger.info("This Passport belongs to -->"+passport.getStudent());
 
 	}
+	public void inserthardcodedStudentAndCourse() {
+		Student student=new Student("Jack Ma");
+		Course course = new Course("Artificial Intelligence");
+		em.persist(student);
+		em.persist(course);
+		
+		student.addCourses(course);
+		course.addStudents(student);
+		em.persist(student);
+	}
+	public void insertStudentAndCourse(Student student,Course course) {
+				
+		student.addCourses(course);
+		course.addStudents(student);
+		em.persist(student);
+		em.persist(course);
+	}
+	
 	
 	
 }
