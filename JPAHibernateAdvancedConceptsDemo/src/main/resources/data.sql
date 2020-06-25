@@ -23,3 +23,9 @@ insert into student(id,name,passport_id) values (2001,'Ritu',4001);
 insert into student(id,name,passport_id) values (2002,'Deepu',4002);
 insert into student(id,name,passport_id) values (2003,'Isha',4003);
 insert into student(id,name,passport_id) values (2004,'Neha',4004);
+
+insert into review(id,rating,description,course_id,student_id) values (5001,'5','Awesome Learning','1001','2001');
+insert into review(id,rating,description,course_id,student_id) values (5002,'5','Great Learning','1001','2002');
+insert into review(id,rating,description,course_id,student_id) values (5003,'4','Enjoyed Learning','1003','2002');
+insert into review(id,rating,description,course_id,student_id) values (5004,'4','Wonderful Learning','1005','2004');
+
