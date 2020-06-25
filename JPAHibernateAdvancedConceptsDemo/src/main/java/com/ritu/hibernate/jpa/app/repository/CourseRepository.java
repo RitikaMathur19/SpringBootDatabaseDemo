@@ -1,5 +1,7 @@
 package com.ritu.hibernate.jpa.app.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ritu.hibernate.jpa.app.entity.Course;
+import com.ritu.hibernate.jpa.app.entity.Review;
 
 @Repository
 @Transactional
@@ -74,6 +77,46 @@ public class CourseRepository {
 		Course updatedCourse = em.merge(course);
 		em.flush();
 		return updatedCourse;
+
+	}
+
+	// exploring relationships between entities
+	public void addHardCodedReviewsForCourse() {
+		// get the course
+
+		Course course = findById(1001L);
+
+		// add two reviews to the course
+
+		Review review1 = new Review("5", "Great Learning");
+		Review review2 = new Review("5", "Wow course");
+
+		// add to the course
+		course.addReviews(review1);
+		course.addReviews(review2);
+		// set the course in the review ,establishing relationships	
+		review1.setCourse(course);
+		review2.setCourse(course);
+		//persisting the reviews
+		em.persist(review1);
+		em.persist(review2);
+
+		logger.info("Reviews on the course:" + course + "-->" + course.getReviews());
+
+	}
+
+	public void addReviewForCourse(Long courseId, List<Review> reviews) {
+		// get the course
+
+		Course course = findById(courseId);
+		// add reviews to the course
+		for (Review review : reviews) {
+			course.addReviews(review);
+			review.setCourse(course);
+			em.persist(review);
+		}
+
+		logger.info("Reviews on the course:" + course + "-->" + course.getReviews());
 
 	}
 

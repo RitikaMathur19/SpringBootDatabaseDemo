@@ -3,6 +3,9 @@ package com.ritu.hibernate.jpa.app;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -13,6 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ritu.hibernate.jpa.app.entity.Course;
+import com.ritu.hibernate.jpa.app.entity.Review;
 import com.ritu.hibernate.jpa.app.repository.CourseRepository;
 
 @RunWith(SpringRunner.class)
@@ -21,6 +25,10 @@ public class CourseRepositoryTests {
 	
 	@Autowired
 	CourseRepository courseRepo;
+	
+	@Autowired
+	EntityManager em;
+	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	
@@ -65,6 +73,21 @@ public class CourseRepositoryTests {
 	public void playWithEntityManager() {
 		courseRepo.playWithEntityManager();
 
+	}
+	
+	@Test
+	@Transactional
+	public void getReviewsOnCourses() {
+		Course course = courseRepo.findById(1001L);
+		logger.info("Reviews on the course-->{}" + course.getReviews());
+	}
+
+//taking shortcut in this test method , using entity manager to call a method on review(ideally should be in the review repository)
+	@Test
+	@Transactional
+	public void getCoursefromReview() {
+		Review review = em.find(Review.class, 5001L);
+		logger.info("Reviews on the course-->{}" + review.getCourse());
 	}
 
 
