@@ -9,12 +9,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
+@Table(name="course") //if the name of the table is different than the entity
+@NamedQueries(value= {
+		@NamedQuery(name="query_get_all_courses",query="Select c from Course c"),
+		@NamedQuery(name="query_get_angular_courses",query="Select c from Course c where name like '%Angular%' ")
+})
 public class Course {
 	@Id
 	@GeneratedValue
