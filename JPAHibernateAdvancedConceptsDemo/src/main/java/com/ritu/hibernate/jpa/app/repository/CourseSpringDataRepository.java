@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.ritu.hibernate.jpa.app.entity.Course;
 
 
-/**Displaying the Spring Data JPA functions 
+/**Displaying the Spring Data JPA functions using Spring Data Repository
  * */
+
+@RepositoryRestResource(path="courses")
 public interface CourseSpringDataRepository extends JpaRepository<Course, Long>{
 	List<Course> findByNameAndId(String name,Long id);
 	List<Course> findByNameOrderByIdDesc(String name);

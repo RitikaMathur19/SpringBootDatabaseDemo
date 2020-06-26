@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Student {
 
@@ -26,6 +28,8 @@ public class Student {
 
 	/* Assuming Student can have only one passport */
 	@OneToOne(fetch = FetchType.LAZY)
+	
+	@JsonIgnore
 	private Passport passport;
 	
 	/* One student can submit multiple reviews */

@@ -74,13 +74,7 @@ public class Review {
 	}
 
 	
-	public String getdescription() {
-		return description;
-	}
-
-	public void setdescription(String description) {
-		this.description = description;
-	}
+	
 
 	@Override
 	public String toString() {
