@@ -60,13 +60,17 @@ public class JpaHibernateAdvancedConceptsDemoApplication implements CommandLineR
 		 * studentRepo.insertStudentAndCourse(student, course);
 		 */
 		/**For Inheritance hierarchies*/
-		logger.info(employeeRepo.retrieveFullTimeEmployees().toString());
-		employeeRepo.insertEmployee(new FullTimeEmployee("Meena", new BigDecimal("5000000")));
-		employeeRepo.insertEmployee(new PartTimeEmployee("Rita", new BigDecimal("900")));
-		
-		//For a Mapped superclass
-		logger.info("Full Time Employees-->" + employeeRepo.retrieveFullTimeEmployees());
-		logger.info("Part Time Employees-->" + employeeRepo.retrievePartTimeEmployees());
+		/*
+		 * logger.info(employeeRepo.retrieveFullTimeEmployees().toString());
+		 * employeeRepo.insertEmployee(new FullTimeEmployee("Meena", new
+		 * BigDecimal("5000000"))); employeeRepo.insertEmployee(new
+		 * PartTimeEmployee("Rita", new BigDecimal("900")));
+		 * 
+		 * //For a Mapped superclass logger.info("Full Time Employees-->" +
+		 * employeeRepo.retrieveFullTimeEmployees());
+		 * logger.info("Part Time Employees-->" +
+		 * employeeRepo.retrievePartTimeEmployees());
+		 */
 	}
 
 }
