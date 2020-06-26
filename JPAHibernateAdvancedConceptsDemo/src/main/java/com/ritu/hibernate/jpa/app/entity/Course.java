@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +18,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="course") //if the name of the table is different than the entity
 @NamedQueries(value= {
 		@NamedQuery(name="query_get_all_courses",query="Select c from Course c"),
 		@NamedQuery(name="query_get_angular_courses",query="Select c from Course c where name like '%Angular%' ")
 })
+@Cacheable
 public class Course {
 	@Id
 	@GeneratedValue
@@ -36,9 +40,11 @@ public class Course {
 	private LocalDateTime createdDate;
 	
 	@OneToMany(mappedBy="course")
+	
 	private List<Review> reviews = new ArrayList<>();
 	
 	@ManyToMany(mappedBy="courses")
+	@JsonIgnore
 	private List<Student> students = new  ArrayList<>();
 	
 	protected Course() {}
