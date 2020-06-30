@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ritu.hibernate.jpa.app.entity.Address;
 import com.ritu.hibernate.jpa.app.entity.Passport;
 import com.ritu.hibernate.jpa.app.entity.Student;
 import com.ritu.hibernate.jpa.app.repository.StudentRepository;
@@ -77,6 +78,16 @@ class StudentRepositoryTests {
 			Student student = em.find(Student.class, 2002L);
 			logger.info("Student is->"+student);
 			logger.info("Student's reviews are->"+student.getReviews());
+			
+		}
+		
+		@Test
+		@Transactional
+		public void setAddressOfStudent() {
+			Student student = em.find(Student.class, 2002L);
+			student.setAddress(new Address("B 203","Regency Classic","Pune"));
+			logger.info("Student is->"+student);
+			logger.info("Student's Address is->"+student.getAddress());
 			
 		}
 

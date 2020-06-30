@@ -36,6 +36,8 @@ class NativeQueriesTests {
 		logger.info("Native Query Select * from Course ...{}"+resultlist);
 		
 	}
+	
+	
 	@Test
 	public void nativeQueries_with_parameter() {
 		Query query = em.createNativeQuery("Select * from course where id =?",Course.class);

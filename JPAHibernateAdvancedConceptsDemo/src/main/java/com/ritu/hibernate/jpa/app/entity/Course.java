@@ -13,10 +13,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,13 +33,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		@NamedQuery(name="query_get_angular_courses",query="Select c from Course c where name like '%Angular%' ")
 })
 @Cacheable
+@SQLDelete(sql="update course set is_deleted=true where id =?")
+@Where(clause = "is_deleted=false")
 public class Course {
+	private static Logger logger = LoggerFactory.getLogger(Course.class);
 	@Id
 	@GeneratedValue
 	long id;
 	@Column(nullable=false)
 	String name;
 	
+	//used for soft delete
+	private boolean isDeleted;
+	
+
 	@UpdateTimestamp
 	private LocalDateTime lastUpdatedDate;
 	@CreationTimestamp
@@ -55,6 +67,11 @@ public class Course {
 		this.name = name;
 	}
 
+	@PreRemove
+	public void preDelete() {
+		logger.info("Calling pre remove...");
+		this.isDeleted=true;
+	}
 	public String getName() {
 		return name;
 	}
@@ -106,7 +123,7 @@ public class Course {
 	public void removeStudents(Student student) {
 		this.students.remove(student);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", name=" + name + "]";
