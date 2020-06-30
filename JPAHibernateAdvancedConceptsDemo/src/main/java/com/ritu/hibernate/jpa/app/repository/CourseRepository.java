@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ritu.hibernate.jpa.app.entity.Course;
 import com.ritu.hibernate.jpa.app.entity.Review;
+import com.ritu.hibernate.jpa.app.entity.ReviewRating;
 
 @Repository
 @Transactional
@@ -88,8 +89,8 @@ public class CourseRepository {
 
 		// add two reviews to the course
 
-		Review review1 = new Review("5", "Great Learning");
-		Review review2 = new Review("5", "Wow course");
+		Review review1 = new Review(ReviewRating.FIVE, "Great Learning");
+		Review review2 = new Review(ReviewRating.FIVE, "Wow course");
 
 		// add to the course
 		course.addReviews(review1);
